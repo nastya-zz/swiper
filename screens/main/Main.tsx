@@ -1,7 +1,8 @@
-import { SafeAreaView, StyleSheet } from "react-native";
-import { useStyled, Heading } from "@gluestack-ui/themed";
-import { Background, Typography } from "../../constants";
-import { StatisticBoard } from "./components/StatisticBoard";
+import {SafeAreaView, StyleSheet} from "react-native";
+import {Heading, useStyled} from "@gluestack-ui/themed";
+import {Background, Typography} from "../../constants";
+import {StatisticBoard} from "./components/StatisticBoard";
+import {useTranslation} from "react-i18next";
 
 const Main = () => {
 
@@ -16,10 +17,11 @@ const Main = () => {
     },
   });
 
+  const { t }  = useTranslation();
   return (
     <SafeAreaView style={styles.container}>
       <Heading size={Typography.MAIN_TITLE} m="$4">
-        Swipe Collections
+        {t('SwipeCollections')}
       </Heading>
 
       <StatisticBoard />

@@ -2,6 +2,7 @@ import {GluestackUIProvider,} from "@gluestack-ui/themed";
 import {StyleSheet, View} from "react-native";
 import {config} from "@gluestack-ui/config";
 import {Main} from "./screens/main/Main";
+import "./i18n.config";
 
 export default function App() {
     return (
