@@ -2,9 +2,11 @@ import {Box, Text, HStack, VStack, GlobeIcon, BadgeIcon, BadgeText, Badge} from 
 import {Background, BorderRadius, Margin, Padding} from "../constants";
 import {StyleSheet} from "react-native";
 import {useTranslation} from "react-i18next";
+import {PhotoPreview} from "./PhotoPreview";
 
 export const SwipeBoard = () => {
   const { t }  = useTranslation();
+  const count: number = 25
 
   return (
       <Box
@@ -20,9 +22,11 @@ export const SwipeBoard = () => {
           </Badge>
           <Text>{t('WeFound')}</Text>
 
-          <Box>
-
-          </Box>
+          <HStack space="md">
+            <PhotoPreview count={count} isEmpty={false}/>
+            <PhotoPreview count={count} isEmpty={false}/>
+            <PhotoPreview count={count} isEmpty/>
+          </HStack>
         </VStack>
       </Box>
   )
