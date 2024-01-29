@@ -11,6 +11,7 @@ const StatisticBoard = () => {
       bg={"$" + Background.STATISTIC_BOARD}
       p="$5"
       m="$4"
+      rounded={'$'+BorderRadius.BOX}
       style={styles.statisticBoard}
     >
       <VStack space="sm">
@@ -28,7 +29,6 @@ const StatisticBoard = () => {
 const styles = StyleSheet.create({
   statisticBoard: {
     width: 300,
-    borderRadius: BorderRadius.BOX
   },
 });
 
