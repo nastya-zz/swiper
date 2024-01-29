@@ -1,8 +1,9 @@
 import {SafeAreaView, StyleSheet} from "react-native";
-import {Heading, useStyled} from "@gluestack-ui/themed";
+import {Heading, useStyled, VStack} from "@gluestack-ui/themed";
 import {Background, Typography} from "../../constants";
 import {StatisticBoard} from "./components/StatisticBoard";
 import {useTranslation} from "react-i18next";
+import {SwipeBoard} from "../../components/SwipeBoard";
 
 const Main = () => {
 
@@ -24,7 +25,10 @@ const Main = () => {
         {t('SwipeCollections')}
       </Heading>
 
-      <StatisticBoard />
+      <VStack space="md">
+        <StatisticBoard />
+        <SwipeBoard/>
+      </VStack>
     </SafeAreaView>
   );
 };
