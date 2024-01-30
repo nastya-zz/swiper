@@ -1,31 +1,44 @@
-import {Badge, Box, ChevronRightIcon, HStack, Icon, Text, VStack} from "@gluestack-ui/themed";
-import {Background, BorderRadius, Margin, Padding} from "../constants";
+import {Badge, BadgeIcon, Box, ChevronRightIcon, CircleIcon, HStack, Icon, Text, VStack} from "@gluestack-ui/themed";
+import {Background, BorderRadius, Margin, Padding} from "../constants/styles";
 import {useTranslation} from "react-i18next";
 import {PhotoPreview} from "./PhotoPreview";
+import {TFunctionReturnOptionalDetails} from "i18next";
 
-export const SwipeBoard = () => {
+interface IProps {
+  backgroundColor: string,
+  borderColor: string,
+  count: number,
+  sectionName: string,
+  sectionDescription: string,
+  icon: Icon | null
+}
+
+export const SwipeBoard = (props: IProps) => {
+  const {backgroundColor, borderColor, count, sectionName, icon, sectionDescription} = props
   const { t }  = useTranslation();
-  const count: number = 25
 
   return (
       <Box
-          bg={"$" + Background.SWIPE_BOARD}
+          bg={backgroundColor}
           p={Padding.BOARD}
-          m={Margin.BOARD}
-          rounded={'$' + BorderRadius.BOARD}
+          rounded={BorderRadius.BOARD}
+          borderBottomColor={borderColor}
+          borderBottomWidth="$4"
       >
         <VStack space="sm" >
-          <Badge size="md" variant="solid" borderRadius="$md" action="muted" >
-            <Text>{t('NewPhotos')}</Text>
-            {/*<BadgeIcon as={} ml="$2" />*/}
-          </Badge>
-          <Text>{t('WeFound')}</Text>
+          <HStack>
+            <Badge size="md" variant="solid" borderRadius="$md" action="success" >
+              <Text>{t(sectionName)}</Text>
+              <BadgeIcon as={CircleIcon} ml="$2" />
+            </Badge>
+          </HStack>
+          <Text>{t(sectionDescription)}</Text>
 
           <HStack space="md">
             <PhotoPreview count={count} isEmpty={false}/>
             <PhotoPreview count={count} isEmpty={false}/>
             <PhotoPreview count={count} isEmpty/>
-            <Icon as={ChevronRightIcon}  size="xl" alignSelf='center' color="$secondary300"/>
+            <Icon as={icon}  size="xl" alignSelf='center' color="$secondary500"/>
 
           </HStack>
         </VStack>

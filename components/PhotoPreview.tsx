@@ -1,5 +1,5 @@
 import {Box, Center, ChevronRightIcon, Icon, Image, Text} from "@gluestack-ui/themed";
-import {Background, BorderRadius} from "../constants";
+import {Background, BorderRadius} from "../constants/styles";
 
 interface IProps {
   count: number
@@ -21,11 +21,10 @@ const PhotoPreview = ({count, isEmpty}: IProps) => {
           </Center>
       )
 
-  console.log(count, Center)
   return (
       <Box
           bg={"$" + Background.PHOTO_PREVIEW}
-          rounded={'$' + BorderRadius.PHOTO_PREVIEW}
+          rounded={BorderRadius.PHOTO_PREVIEW}
           borderColor="$borderLight200"
           borderWidth="$4"
       >

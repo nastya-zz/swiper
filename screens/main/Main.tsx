@@ -1,6 +1,6 @@
 import {SafeAreaView, StyleSheet} from "react-native";
-import {Heading, useStyled, VStack} from "@gluestack-ui/themed";
-import {Background, Typography} from "../../constants";
+import {ChevronRightIcon, Text, useStyled, VStack} from "@gluestack-ui/themed";
+import {Background, BorderColor, Typography} from "../../constants/styles";
 import {StatisticBoard} from "./components/StatisticBoard";
 import {useTranslation} from "react-i18next";
 import {SwipeBoard} from "../../components/SwipeBoard";
@@ -21,13 +21,19 @@ const Main = () => {
   const { t }  = useTranslation();
   return (
     <SafeAreaView style={styles.container}>
-      <Heading size={Typography.MAIN_TITLE} m="$4">
-        {t('SwipeCollections')}
-      </Heading>
-
-      <VStack space="md">
+      <VStack space="md" mx="$4">
+        <Text fontSize={Typography.MAIN_TITLE} pt="$4">
+          {t('SwipeCollections')}
+        </Text>
         <StatisticBoard />
-        <SwipeBoard/>
+        <SwipeBoard
+          count={25}
+          backgroundColor={Background.NEW_SWIPE_BOARD}
+          borderColor={BorderColor.NEW_SWIPE_BOARD}
+          sectionName='NewPhotos'
+          sectionDescription='WeFound'
+          icon={ChevronRightIcon}
+         />
       </VStack>
     </SafeAreaView>
   );

@@ -1,5 +1,5 @@
 import { Box, Text, HStack, VStack } from "@gluestack-ui/themed";
-import {Background, BorderRadius, Margin, Padding} from "../../../constants";
+import {Background, BorderRadius, Margin, Padding} from "../../../constants/styles";
 import { StyleSheet } from "react-native";
 import {useTranslation} from "react-i18next";
 
@@ -10,8 +10,7 @@ const StatisticBoard = () => {
     <Box
       bg={"$" + Background.STATISTIC_BOARD}
       p={Padding.BOARD}
-      m={Margin.BOARD}
-      rounded={'$'+BorderRadius.BOARD}
+      rounded={BorderRadius.BOARD}
       style={styles.statisticBoard}
     >
       <VStack space="sm">
