@@ -1,6 +1,5 @@
-import {Box, Text, HStack, VStack, GlobeIcon, BadgeIcon, BadgeText, Badge} from "@gluestack-ui/themed";
+import {Badge, Box, ChevronRightIcon, HStack, Icon, Text, VStack} from "@gluestack-ui/themed";
 import {Background, BorderRadius, Margin, Padding} from "../constants";
-import {StyleSheet} from "react-native";
 import {useTranslation} from "react-i18next";
 import {PhotoPreview} from "./PhotoPreview";
 
@@ -16,7 +15,7 @@ export const SwipeBoard = () => {
           rounded={'$' + BorderRadius.BOARD}
       >
         <VStack space="sm" >
-          <Badge size="md" variant="solid" borderRadius="$md" action="muted">
+          <Badge size="md" variant="solid" borderRadius="$md" action="muted" >
             <Text>{t('NewPhotos')}</Text>
             {/*<BadgeIcon as={} ml="$2" />*/}
           </Badge>
@@ -26,6 +25,8 @@ export const SwipeBoard = () => {
             <PhotoPreview count={count} isEmpty={false}/>
             <PhotoPreview count={count} isEmpty={false}/>
             <PhotoPreview count={count} isEmpty/>
+            <Icon as={ChevronRightIcon}  size="xl" alignSelf='center' color="$secondary300"/>
+
           </HStack>
         </VStack>
       </Box>

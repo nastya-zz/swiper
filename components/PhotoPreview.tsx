@@ -1,5 +1,5 @@
-import {Box, Center, Image, Text} from "@gluestack-ui/themed";
-import {Background, BorderRadius, Margin, Padding} from "../constants";
+import {Box, Center, ChevronRightIcon, Icon, Image, Text} from "@gluestack-ui/themed";
+import {Background, BorderRadius} from "../constants";
 
 interface IProps {
   count: number
@@ -16,8 +16,8 @@ const PhotoPreview = ({count, isEmpty}: IProps) => {
           }}
       />) :
       (
-          <Center width="$30">
-            <Text>{count - 2}</Text>
+          <Center width={90} flex>
+            <Text size="xl" alignSelf='center' color="white">+{count - 2}</Text>
           </Center>
       )
 
