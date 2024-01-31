@@ -18,7 +18,7 @@ const Main = () => {
     },
   });
 
-  const { t }  = useTranslation();
+  const { t } = useTranslation();
   return (
     <SafeAreaView style={styles.container}>
       <VStack space="md" mx="$4">
@@ -33,6 +33,16 @@ const Main = () => {
           sectionName='NewPhotos'
           sectionDescription='WeFound'
           icon={ChevronRightIcon}
+          badgeVariant='success'
+         />
+        <SwipeBoard
+          count={25}
+          backgroundColor={Background.ALL_SWIPE_BOARD}
+          borderColor={BorderColor.ALL_SWIPE_BOARD}
+          sectionName='MostRecent'
+          sectionDescription='MostRecentPhoto'
+          icon={ChevronRightIcon}
+          badgeVariant='muted'
          />
       </VStack>
     </SafeAreaView>

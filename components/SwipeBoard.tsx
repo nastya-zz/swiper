@@ -7,6 +7,7 @@ import {TFunctionReturnOptionalDetails} from "i18next";
 interface IProps {
   backgroundColor: string,
   borderColor: string,
+  badgeVariant: number,
   count: number,
   sectionName: string,
   sectionDescription: string,
@@ -14,7 +15,7 @@ interface IProps {
 }
 
 export const SwipeBoard = (props: IProps) => {
-  const {backgroundColor, borderColor, count, sectionName, icon, sectionDescription} = props
+  const {backgroundColor, borderColor, count, sectionName, icon, sectionDescription, badgeVariant} = props
   const { t }  = useTranslation();
 
   return (
@@ -27,7 +28,7 @@ export const SwipeBoard = (props: IProps) => {
       >
         <VStack space="sm" >
           <HStack>
-            <Badge size="md" variant="solid" borderRadius="$md" action="success" >
+            <Badge size="md" variant="solid" borderRadius="$md" action={badgeVariant} >
               <Text>{t(sectionName)}</Text>
               <BadgeIcon as={CircleIcon} ml="$2" />
             </Badge>
