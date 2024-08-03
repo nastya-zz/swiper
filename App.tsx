@@ -3,16 +3,11 @@ import {StyleSheet, View} from "react-native";
 import {config} from "@gluestack-ui/config";
 import {Main} from "./screens/main/Main";
 import "./i18n.config";
-import * as MediaLibrary from 'expo-media-library';
+import {useMediaStore} from "./store/media";
 
 
 export default function App() {
-  const linkMedia = async () => {
-    const {assets} = await MediaLibrary.getAssetsAsync({first: 5})
-    console.log('MediaLibrary1', assets)
-  }
-
-  linkMedia()
+  useMediaStore.getState().initMedia()
 
   return (
         <GluestackUIProvider config={config}>

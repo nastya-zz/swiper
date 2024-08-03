@@ -1,21 +1,12 @@
-import {Badge, BadgeIcon, Box, ChevronRightIcon, CircleIcon, HStack, Icon, Text, VStack} from "@gluestack-ui/themed";
-import {Background, BorderRadius, Margin, Padding} from "../constants/styles";
+import {Badge, BadgeIcon, Box, CircleIcon, HStack, Icon, Text, VStack} from "@gluestack-ui/themed";
+import {BorderRadius, Padding} from "../constants/styles";
 import {useTranslation} from "react-i18next";
 import {PhotoPreview} from "./PhotoPreview";
-import {TFunctionReturnOptionalDetails} from "i18next";
+import {IBoardProps} from "../screens/main/utils/get-board";
 
-interface IProps {
-  backgroundColor: string,
-  borderColor: string,
-  badgeVariant: number,
-  count: number,
-  sectionName: string,
-  sectionDescription: string,
-  icon: Icon | null
-}
 
-export const SwipeBoard = (props: IProps) => {
-  const {backgroundColor, borderColor, count, sectionName, icon, sectionDescription, badgeVariant} = props
+export const SwipeBoard = (props: IBoardProps ) => {
+  const {backgroundColor, borderColor, count, sectionName, icon, sectionDescription, badgeVariant, prevUrls} = props
   const { t }  = useTranslation();
 
   return (
@@ -36,9 +27,7 @@ export const SwipeBoard = (props: IProps) => {
           <Text>{t(sectionDescription)}</Text>
 
           <HStack space="md">
-            <PhotoPreview count={count} isEmpty={false}/>
-            <PhotoPreview count={count} isEmpty={false}/>
-            <PhotoPreview count={count} isEmpty/>
+            {prevUrls.slice(0, 3).map((uri, i) => (<PhotoPreview key={i + uri} count={count - 2} isEmpty={i >= 2} url={uri} />))}
             <Icon as={icon}  size="xl" alignSelf='center' color="$secondary500"/>
 
           </HStack>

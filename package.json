@@ -13,14 +13,17 @@
     "@gluestack-style/react": "^1.0.43",
     "@gluestack-ui/config": "^1.1.1",
     "@gluestack-ui/themed": "^1.1.0",
+    "@react-native-async-storage/async-storage": "1.21.0",
     "expo": "~50.0.4",
+    "expo-media-library": "~15.9.1",
     "expo-status-bar": "~1.11.1",
     "i18next": "^23.7.20",
+    "immer": "^10.0.3",
     "react": "18.2.0",
     "react-i18next": "^14.0.1",
     "react-native": "0.73.2",
     "react-native-svg": "^13.4.0",
-    "expo-media-library": "~15.9.1"
+    "zustand": "^4.5.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",

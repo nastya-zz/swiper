@@ -8,7 +8,7 @@ const StatisticBoard = () => {
 
     return (
     <Box
-      bg={"$" + Background.STATISTIC_BOARD}
+      bg={Background.STATISTIC_BOARD}
       p={Padding.BOARD}
       rounded={BorderRadius.BOARD}
       style={styles.statisticBoard}

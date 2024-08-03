@@ -7,6 +7,9 @@
   "STATS": "STATS",
   "MostRecent": "Most recent",
   "MostRecentPhoto": "Most recent photo added",
+  "Favorite": "Favorite",
+  "FavoritePhoto": "Favorite photos",
   "CameraRoll": "Camera roll",
+  "CameraRollPhoto": "Camera roll photo",
   "AllPhotos": "All photos"
 }
