@@ -8,7 +8,7 @@ interface IBoard {
   borderColor: string,
   badgeVariant: string,
   count: number,
-  sectionName: string,
+  sectionName: keyof ICommonCollections,
   sectionDescription: string,
   icon: Icon | null,
   prevUrls: string[] | [],

@@ -21,7 +21,9 @@ interface IMedia {
   commonCollection: ICommonCollections;
   deleteSelected: [];
   saveSelected: [];
+  selectedCollection: null |  Record<keyof ICommonCollections, ICommonCollections[keyof ICommonCollections]>,
   setCommonCollection: (keys :TCommonCollection[]) => void;
+  setSelectedCollection: (name: keyof ICommonCollections, collection: Asset[]) => void;
   initMedia: () => void;
 }
 
@@ -83,7 +85,8 @@ const useMediaStore = create<IMedia>()((set, get) => ({
   },
   deleteSelected: [],
   saveSelected: [],
-  // increase: (by) => set((state) => ({ bears: state.bears + by })),
+  selectedCollection: null,
+
   setCommonCollection: async (param: TCommonCollection[] = DEFAULT_PARAMS) => {
     set( {isMediaLoaded: false})
     const promise = new Promise(resolve => {
@@ -114,7 +117,13 @@ const useMediaStore = create<IMedia>()((set, get) => ({
     } catch(e) {
       console.error(e)
     }
+  },
+
+  setSelectedCollection(nameCollection, collection) {
+    set( {selectedCollection: {
+        [nameCollection]: collection
+      }})
   }
 }))
 
-export {useMediaStore, DEFAULT_PARAMS}
+export {useMediaStore, DEFAULT_PARAMS, ICommonCollections}

@@ -1,4 +1,4 @@
-import {SafeAreaView, ScrollView, StyleSheet} from "react-native";
+import {SafeAreaView, ScrollView, StyleSheet, TouchableHighlight} from "react-native";
 import {Spinner, Text, useStyled, VStack} from "@gluestack-ui/themed";
 import {Background, Typography} from "../../constants/styles";
 import {StatisticBoard} from "./components/StatisticBoard";
@@ -7,12 +7,15 @@ import {SwipeBoard} from "../../components/SwipeBoard";
 import {useMediaStore} from "../../store/media";
 import {useEffect, useState} from "react";
 import {getBoard} from "./utils";
+import {IBoardProps} from "./utils/get-board";
 
 const Main = () => {
-  const {commonCollection, isMediaLoaded } =  useMediaStore((state) => ({
+  const {commonCollection, isMediaLoaded, setSelectedCollection, selectedCollection } =  useMediaStore((state) => ({
     commonCollection: state.commonCollection,
     setCommonCollection: state.setCommonCollection,
     isMediaLoaded: state.isMediaLoaded,
+    setSelectedCollection: state.setSelectedCollection,
+    selectedCollection: state.selectedCollection
   }))
 
   const [boards, setBoards] = useState([])
@@ -21,7 +24,6 @@ const Main = () => {
     const commonCollectionKeys = Object.keys(commonCollection)
     const boardArray = commonCollectionKeys.map(key => getBoard(key, commonCollection[key]))
     setBoards(boardArray)
-
   }, [commonCollection])
 
   const styled = useStyled();
@@ -41,20 +43,29 @@ const Main = () => {
     </SafeAreaView>)
   }
 
+  const handleTouchBoard = (board :IBoardProps) => {
+    setSelectedCollection(board.sectionName, board.collection)
+  }
+
+
   const boardList = boards
       .filter(board => board.count)
       .map((board, i) => {
-    return (<SwipeBoard
-        key={'board-'+i}
-        count={board.count}
-        backgroundColor={board.backgroundColor}
-        borderColor={board.borderColor}
-        sectionName={board.sectionName}
-        sectionDescription={board.sectionDescription}
-        icon={board.icon}
-        badgeVariant={board.badgeVariant}
-        prevUrls={board.prevUrls}
-        collection={board.collection}/>)
+    return (
+        <TouchableHighlight underlayColor="red" key={'board-'+i} onPress={() => handleTouchBoard(board)}>
+          <SwipeBoard
+              count={board.count}
+              backgroundColor={board.backgroundColor}
+              borderColor={board.borderColor}
+              sectionName={board.sectionName}
+              sectionDescription={board.sectionDescription}
+              icon={board.icon}
+              badgeVariant={board.badgeVariant}
+              prevUrls={board.prevUrls}
+              collection={board.collection}
+          />
+    </TouchableHighlight>
+    )
   })
 
   return (

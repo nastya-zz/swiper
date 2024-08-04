@@ -1,4 +1,4 @@
-import {Badge, BadgeIcon, Box, CircleIcon, HStack, Icon, Text, VStack} from "@gluestack-ui/themed";
+import {Badge, BadgeIcon, Box, Icon, CircleIcon, HStack, Button, Text, VStack} from "@gluestack-ui/themed";
 import {BorderRadius, Padding} from "../constants/styles";
 import {useTranslation} from "react-i18next";
 import {PhotoPreview} from "./PhotoPreview";
@@ -26,10 +26,10 @@ export const SwipeBoard = (props: IBoardProps ) => {
           </HStack>
           <Text>{t(sectionDescription)}</Text>
 
-          <HStack space="md">
+          <HStack space="md" >
             {prevUrls.slice(0, 3).map((uri, i) => (<PhotoPreview key={i + uri} count={count - 2} isEmpty={i >= 2} url={uri} />))}
-            <Icon as={icon}  size="xl" alignSelf='center' color="$secondary500"/>
 
+            <Icon as={icon}  size="xl" alignSelf='center' color="$secondary500"/>
           </HStack>
         </VStack>
       </Box>
