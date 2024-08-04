@@ -2,6 +2,7 @@ import {CommonAlbumCollection} from "../../../types";
 import {Background, BorderColor} from "../../../constants/styles";
 import {ChevronRightIcon, Icon} from "@gluestack-ui/themed";
 import {Asset} from "expo-media-library";
+import {ICommonCollections} from "../../../store/media";
 
 interface IBoard {
   backgroundColor: string,
