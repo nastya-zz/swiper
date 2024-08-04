@@ -4,6 +4,7 @@ import {config} from "@gluestack-ui/config";
 import {Main} from "./screens/main/Main";
 import "./i18n.config";
 import {useMediaStore} from "./store/media";
+import {ReviewCollection} from "./screens/review-collection/ReviewCollection";
 
 
 export default function App() {
@@ -13,6 +14,7 @@ export default function App() {
         <GluestackUIProvider config={config}>
             <View style={styles.container}>
                 <Main/>
+              {/*{<ReviewCollection/>}*/}
             </View>
         </GluestackUIProvider>
     );
