@@ -55,3 +55,7 @@ I
 components/SwipeBoard.tsx,1/6/16f5b314e1fbacf56e540b8c5faf6e11b4a08125
 O
 screens/main/utils/get-board.ts,6/9/69622810627b3ab4fb1173e86aef0781e58a799e
+_
+/screens/review-collection/components/Header.tsx,0/f/0fecc3b91b44dfb54b17ce62dd888f801f8e148c
+^
+.screens/review-collection/ReviewCollection.tsx,6/7/67bdfaee9a1c4b1b4c5d318b1fcea64776541be4

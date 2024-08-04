@@ -10,12 +10,11 @@ import {getBoard} from "./utils";
 import {IBoardProps} from "./utils/get-board";
 
 const Main = () => {
-  const {commonCollection, isMediaLoaded, setSelectedCollection, selectedCollection } =  useMediaStore((state) => ({
+  const {commonCollection, isMediaLoaded, setSelectedCollection } =  useMediaStore((state) => ({
     commonCollection: state.commonCollection,
     setCommonCollection: state.setCommonCollection,
     isMediaLoaded: state.isMediaLoaded,
-    setSelectedCollection: state.setSelectedCollection,
-    selectedCollection: state.selectedCollection
+    setSelectedCollection: state.setSelectedCollection
   }))
 
   const [boards, setBoards] = useState([])
@@ -44,7 +43,7 @@ const Main = () => {
   }
 
   const handleTouchBoard = (board :IBoardProps) => {
-    setSelectedCollection(board.sectionName, board.collection)
+    setSelectedCollection(board.collectionName, board.collection)
   }
 
 
