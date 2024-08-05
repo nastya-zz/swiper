@@ -1,4 +1,4 @@
-import {SafeAreaView, ScrollView, StyleSheet, TouchableHighlight} from "react-native";
+import {SafeAreaView, ScrollView, StyleSheet} from "react-native";
 import {Spinner, Text, useStyled, VStack} from "@gluestack-ui/themed";
 import {Background, Typography} from "../../constants/styles";
 import {StatisticBoard} from "./components/StatisticBoard";
@@ -10,7 +10,7 @@ import {getBoard} from "./utils";
 import {IBoardProps} from "./utils/get-board";
 
 const Main = () => {
-  const {commonCollection, isMediaLoaded, setSelectedCollection } =  useMediaStore((state) => ({
+  const {commonCollection, isMediaLoaded, setSelectedCollection} = useMediaStore((state) => ({
     commonCollection: state.commonCollection,
     setCommonCollection: state.setCommonCollection,
     isMediaLoaded: state.isMediaLoaded,
@@ -35,14 +35,14 @@ const Main = () => {
     },
   });
 
-  const { t } = useTranslation();
+  const {t} = useTranslation();
   if (!isMediaLoaded) {
     return (<SafeAreaView style={styles.container} alignItems="center" justifyContent="center">
-      <Spinner size="large" />
+      <Spinner size="large"/>
     </SafeAreaView>)
   }
 
-  const handleTouchBoard = (board :IBoardProps) => {
+  const handleTouchBoard = (board: IBoardProps) => {
     setSelectedCollection(board.collectionName, board.collection)
   }
 
@@ -50,22 +50,23 @@ const Main = () => {
   const boardList = boards
       .filter(board => board.count)
       .map((board, i) => {
-    return (
-        <TouchableHighlight underlayColor="red" key={'board-'+i} onPress={() => handleTouchBoard(board)}>
-          <SwipeBoard
-              count={board.count}
-              backgroundColor={board.backgroundColor}
-              borderColor={board.borderColor}
-              sectionName={board.sectionName}
-              sectionDescription={board.sectionDescription}
-              icon={board.icon}
-              badgeVariant={board.badgeVariant}
-              prevUrls={board.prevUrls}
-              collection={board.collection}
-          />
-    </TouchableHighlight>
-    )
-  })
+        return (
+            <SwipeBoard
+                onPress={() => handleTouchBoard(board)}
+                key={'board-' + i}
+                count={board.count}
+                backgroundColor={board.backgroundColor}
+                borderColor={board.borderColor}
+                sectionName={board.sectionName}
+                sectionDescription={board.sectionDescription}
+                icon={board.icon}
+                badgeVariant={board.badgeVariant}
+                prevUrls={board.prevUrls}
+                collection={board.collection}
+                collectionName={board.collectionName}
+            />
+        )
+      })
 
   return (
       <SafeAreaView style={styles.container}>
@@ -74,7 +75,7 @@ const Main = () => {
             <Text fontSize={Typography.MAIN_TITLE} pt="$4">
               {t('SwipeCollections')}
             </Text>
-            <StatisticBoard />
+            <StatisticBoard/>
             {
               boardList
             }
@@ -85,4 +86,4 @@ const Main = () => {
   );
 };
 
-export { Main };
+export {Main};

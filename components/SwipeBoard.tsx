@@ -3,6 +3,7 @@ import {BorderRadius, Padding} from "../constants/styles";
 import {useTranslation} from "react-i18next";
 import {PhotoPreview} from "./PhotoPreview";
 import {IBoardProps} from "../screens/main/utils/get-board";
+import {TouchableHighlight} from "react-native";
 
 
 export const SwipeBoard = (props: IBoardProps ) => {
@@ -10,6 +11,8 @@ export const SwipeBoard = (props: IBoardProps ) => {
   const { t }  = useTranslation();
 
   return (
+      <TouchableHighlight underlayColor="red">
+
       <Box
           bg={backgroundColor}
           p={Padding.BOARD}
@@ -33,6 +36,7 @@ export const SwipeBoard = (props: IBoardProps ) => {
           </HStack>
         </VStack>
       </Box>
+      </TouchableHighlight>
   )
 }
 
