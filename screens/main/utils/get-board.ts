@@ -29,7 +29,8 @@ const BoardProperty :Record<CommonAlbumCollection, IBoard> = {
     icon: ChevronRightIcon,
     badgeVariant: 'success',
     prevUrls: [],
-    collection: []
+    collection: [],
+    collectionName: CommonAlbumCollection.NEW_PHOTOS
   },
   [CommonAlbumCollection.RECENTLY]: {
     count: 0,
@@ -40,7 +41,8 @@ const BoardProperty :Record<CommonAlbumCollection, IBoard> = {
     icon: ChevronRightIcon,
     badgeVariant: 'muted',
     prevUrls: [],
-    collection: []
+    collection: [],
+    collectionName: CommonAlbumCollection.RECENTLY
   },
   [CommonAlbumCollection.CAMERA_ROLL]: {
     count: 0,
@@ -51,7 +53,8 @@ const BoardProperty :Record<CommonAlbumCollection, IBoard> = {
     icon: ChevronRightIcon,
     badgeVariant: 'muted',
     prevUrls: [],
-    collection: []
+    collection: [],
+    collectionName: CommonAlbumCollection.CAMERA_ROLL
   },
   [CommonAlbumCollection.FAVORITES]: {
     count: 0,
@@ -62,7 +65,8 @@ const BoardProperty :Record<CommonAlbumCollection, IBoard> = {
     icon: ChevronRightIcon,
     badgeVariant: 'muted',
     prevUrls: [],
-    collection: []
+    collection: [],
+    collectionName: CommonAlbumCollection.FAVORITES
   },
 }
 

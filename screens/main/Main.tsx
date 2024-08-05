@@ -1,13 +1,15 @@
-import {SafeAreaView, ScrollView, StyleSheet} from "react-native";
+import {SafeAreaView, ScrollView, StyleSheet, TouchableOpacity} from "react-native";
 import {Spinner, Text, useStyled, VStack} from "@gluestack-ui/themed";
 import {Background, Typography} from "../../constants/styles";
 import {StatisticBoard} from "./components/StatisticBoard";
 import {useTranslation} from "react-i18next";
 import {SwipeBoard} from "../../components/SwipeBoard";
-import {useMediaStore} from "../../store/media";
+import {useMediaStore} from "../../store";
 import {useEffect, useState} from "react";
 import {getBoard} from "./utils";
 import {IBoardProps} from "./utils/get-board";
+import {router} from 'expo-router';
+
 
 const Main = () => {
   const {commonCollection, isMediaLoaded, setSelectedCollection} = useMediaStore((state) => ({
@@ -43,7 +45,9 @@ const Main = () => {
   }
 
   const handleTouchBoard = (board: IBoardProps) => {
+    console.log(board.collectionName)
     setSelectedCollection(board.collectionName, board.collection)
+    router.replace('/review-collection')
   }
 
 
@@ -51,20 +55,20 @@ const Main = () => {
       .filter(board => board.count)
       .map((board, i) => {
         return (
-            <SwipeBoard
-                onPress={() => handleTouchBoard(board)}
-                key={'board-' + i}
-                count={board.count}
-                backgroundColor={board.backgroundColor}
-                borderColor={board.borderColor}
-                sectionName={board.sectionName}
-                sectionDescription={board.sectionDescription}
-                icon={board.icon}
-                badgeVariant={board.badgeVariant}
-                prevUrls={board.prevUrls}
-                collection={board.collection}
-                collectionName={board.collectionName}
-            />
+            <TouchableOpacity key={'board-' + i} onPress={() => handleTouchBoard(board)}>
+              <SwipeBoard
+                  count={board.count}
+                  backgroundColor={board.backgroundColor}
+                  borderColor={board.borderColor}
+                  sectionName={board.sectionName}
+                  sectionDescription={board.sectionDescription}
+                  icon={board.icon}
+                  badgeVariant={board.badgeVariant}
+                  prevUrls={board.prevUrls}
+                  collection={board.collection}
+                  collectionName={board.collectionName}
+              />
+            </TouchableOpacity>
         )
       })
 

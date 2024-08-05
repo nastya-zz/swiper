@@ -10,9 +10,10 @@ import {
   SettingsIcon,
   ChevronRightIcon
 } from "@gluestack-ui/themed";
-import {SafeAreaView, ScrollView, StyleSheet} from "react-native";
+import {SafeAreaView, ScrollView, StyleSheet, TouchableOpacity} from "react-native";
 import {Background} from "../../../constants/styles";
 import {Asset} from "expo-media-library";
+import {router} from "expo-router";
 
 
 interface IHeaderProp {
@@ -31,27 +32,30 @@ const  Header = (props: IHeaderProp) => {
       backgroundColor: styled.config.tokens.colors[Background.MAIN_APP],
     },
   });
-
+  const date = new Date(props.asset.creationTime).toLocaleDateString()
 
   return (
       <SafeAreaView style={styles.container} >
         <ScrollView>
           <Box mx="$2">
             <HStack space="sm" reversed={false}>
-              <Center w="$10" h="$15">
-                <Icon as={MenuIcon}  w="$8" h="$8" color={Background.ICONS_REVIEW}/>
-              </Center>
+              <TouchableOpacity  onPress={() => router.replace('/')}>
+                <Center w="$10" h="$15">
+                  <Icon as={MenuIcon}  w="$8" h="$8" color={Background.ICONS_REVIEW}/>
+                </Center>
+              </TouchableOpacity>
+
               <Center w="$80" h="$15">
                 <VStack space="xs">
                   <Center>
                     <Text bold color={Background.ICONS_REVIEW}>
-                      Current Collection Name
+                      {props.collectionName}
                       <Center>
                         <Icon as={ChevronRightIcon} ml="$2" w="$4" h="$4" color={Background.ICONS_REVIEW}/>
                       </Center>
                     </Text>
                   </Center>
-                  <Center><Text color={Background.ICONS_REVIEW}>Current Photo Date Info</Text></Center>
+                  <Center><Text color={Background.ICONS_REVIEW}>{date}</Text></Center>
                 </VStack>
               </Center>
               <Center w="$10" h="$15" >
